@@ -30,10 +30,6 @@ const { title } = Astro.props;
     --color-subtle: #a0a0a0;
     --color-primary: #4fc3f7;
     --scrollbar-background-rgb: 100, 100, 100;
-
-    /* 🆕 Novas cores para texto da sidebar e da área principal */
-    --color-text-sidebar: #000000;
-    --color-text-main: #ffffff;
   }
 
   html {
@@ -51,12 +47,23 @@ const { title } = Astro.props;
     background-color: var(--color-background);
   }
 
+  /* 🆕 Força as cores da sidebar e da área principal */
   #sidebar {
-    color: var(--color-text-sidebar);
+    background-color: var(--color-sidebar);
+    color: #000000 !important; /* texto preto */
+  }
+
+  #sidebar * {
+    color: #000000 !important;
   }
 
   #main {
-    color: var(--color-text-main);
+    background-color: var(--color-background);
+    color: #ffffff !important; /* texto branco */
+  }
+
+  #main * {
+    color: #ffffff !important;
   }
 
   code {
