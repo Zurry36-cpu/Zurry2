@@ -5,14 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#10A37F',      // Verde ChatGPT
-        background: '#F7F7F8',   // Fundo geral
-        surface: '#FFFFFF',      // Cartões e caixas
-        border: '#E5E5E5',       // Bordas suaves
+        background: '#343541',   // Fundo geral (lateral escura)
+        surface: '#FFFFFF',      // Área principal (conteúdo)
         text: '#202123',         // Texto principal
         subtle: '#6B6C7E',       // Texto secundário
+        border: '#E5E5E5',       // Bordas
         input: '#F0F0F0',        // Fundo de inputs
-        hover: '#ECECF1',        // Hover em menus
+        hover: '#ECECF1',        // Cor de hover
       },
     },
   },
