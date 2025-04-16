@@ -20,105 +20,116 @@ const { title } = Astro.props;
     <slot />
   </body>
 </html>
+
 <style is:global>
+  /* ===== 🎨 Cores personalizadas ===== */
   :root {
-    --content-background: rgb(250, 251, 250);
-    --scrollbar-background-rgb: 237, 238, 238;
-    --theme-purple: linear-gradient(
-      45deg,
-      rgba(124, 58, 237, 0.8),
-      rgba(218, 98, 196, 0.8) 30%,
-      white 80%
-    );
-    --theme-purple-antd: #b353e0;
-    --accent-gradient: var(--theme-purple);
-    --theme-antd: var(--theme-purple-antd);
+    --color-background: #2B2B2B;
+    --color-sidebar: #1E1E1E;
+    --color-surface: #3A3A3A;
+    --color-text: #E0E0E0;
+    --color-subtle: #A0A0A0;
+    --color-primary: #4FC3F7;
+    --scrollbar-background-rgb: 100, 100, 100;
   }
+
   html {
     font-family: system-ui, sans-serif;
-    background-color: var(--content-background);
+    background-color: var(--color-background);
+    color: var(--color-text);
     height: 100%;
   }
+
   body {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    background-color: var(--color-background);
   }
+
   code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    font-family: Menlo, Monaco, monospace;
   }
+
   textarea::-webkit-scrollbar {
     display: none;
   }
+
   .text-gradient {
-    background-image: var(--accent-gradient);
+    background-image: linear-gradient(45deg, var(--color-primary), white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
-    background-position: 0%;
   }
+
   .bg-gradient {
-    background-image: var(--accent-gradient);
+    background-image: linear-gradient(45deg, var(--color-primary), white);
     background-size: 400%;
-    background-position: 0%;
   }
+
+  /* Cores e ajustes extras */
   .prose pre code.hljs {
     overflow: initial;
     padding: 3px 5px;
   }
+
   code.hljs:not(pre code.hljs) {
-    /* remove inline code background */
     background: transparent;
   }
+
   code.hljs:not(pre code.hljs)::before,
   code.hljs:not(pre code.hljs)::after {
-    /* remove extra `` */
     content: '';
   }
-  /* copy button */
+
   .prose pre .copy-code {
     display: none;
   }
+
   .prose pre:hover .copy-code {
     display: block;
   }
-  /* image without margin */
+
   .prose.img-no-margin img {
     margin: 0;
   }
-  /* mathjax */
+
   mjx-container {
     overflow-y: hidden;
     overflow-x: auto;
   }
-  /* common scrollbar */
+
   .common-scrollbar::-webkit-scrollbar {
     width: 8px;
   }
+
   .common-scrollbar::-webkit-scrollbar-thumb {
     background-color: rgb(var(--scrollbar-background-rgb));
     border-radius: 10px;
   }
+
   .common-scrollbar::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
   pre.common-scrollbar::-webkit-scrollbar-thumb {
     background-color: rgba(var(--scrollbar-background-rgb), 0.2);
   }
-  /* dropdown */
+
   .common-scrollbar .ant-dropdown-menu::-webkit-scrollbar {
     width: 8px;
   }
+
   .common-scrollbar .ant-dropdown-menu::-webkit-scrollbar-thumb {
     background-color: rgb(var(--scrollbar-background-rgb));
     border-radius: 10px;
   }
+
   .common-scrollbar .ant-dropdown-menu::-webkit-scrollbar-track {
     background-color: transparent;
   }
-  /* 定义动画效果 */
+
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -130,11 +141,8 @@ const { title } = Astro.props;
     }
   }
 
-  /* 给要添加动画的元素应用动画 */
   .msg-fade-in {
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+    animation: fadeIn 1s both;
   }
 
   .loading {
@@ -148,7 +156,7 @@ const { title } = Astro.props;
     width: 16px;
     height: 16px;
     border-radius: 10px;
-    border-bottom: 2px solid #c6c1c1;
+    border-bottom: 2px solid var(--color-subtle);
     animation: spin 0.75s linear infinite;
     margin-right: 10px;
   }
@@ -158,35 +166,40 @@ const { title } = Astro.props;
       transform: rotate(360deg);
     }
   }
-  /* antd css rewrite */
+
   #container .ant-tabs-tab-active {
-    background-color: var(--content-background);
-    border-bottom-color: var(--content-background);
+    background-color: var(--color-background);
+    border-bottom-color: var(--color-background);
   }
+
   .ant-tabs > .ant-tabs-nav {
     margin-bottom: 0;
   }
+
   #container .ant-tabs-tab > .ant-tabs-tab-btn {
     max-width: 160px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
   .ant-tabs-dropdown {
     max-width: 400px;
   }
+
   .ant-tabs-dropdown .ant-tabs-dropdown-menu-item > span {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  /** medium zoom */
+
   .medium-zoom-overlay {
     z-index: 20;
   }
+
   .medium-zoom-image {
     z-index: 21;
   }
-  /* mobile style */
+
   @media screen and (max-width: 768px) {
     html {
       font-size: 14px;
