@@ -1,4 +1,5 @@
-/* eslint-disable global-require */
+// tailwind.config.js
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -6,13 +7,11 @@ module.exports = {
     extend: {
       colors: {
         background: '#343541', // fundo escuro
-        surface: '#444654',    // caixas e mensagens
-        border: '#565869',     // bordas
-        text: '#ECECF1',        // texto principal
-        subtle: '#A9A9BC',     // texto mais fraco
+        surface: '#FFFFFF',    // área branca da esquerda
+        text: '#D1D5DB',       // texto claro (cinza claro)
+        primary: '#AB68FF',    // botão roxo
         input: '#40414F',      // fundo do input
-        hover: '#2A2B32',      // hover menus
-        primary: '#10A37F'     // botão ou destaques
+        border: '#565869',     // bordas sutis
       },
     },
   },
