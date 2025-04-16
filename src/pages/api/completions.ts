@@ -5,27 +5,21 @@ import { createParser } from 'eventsource-parser';
 import { defaultModel, supportedModels } from '@configs';
 import { Message } from '@interfaces';
 import { loadBalancer } from '@utils/server';
-import { apiKeyStrategy, apiKeys, baseURL, config, password as pwd } from '.';
+import { apiKeyStrategy, apiKeys, config, password as pwd } from '.';
 
 export { config };
 
 export const post: APIRoute = async ({ request }) => {
-  if (!baseURL) {
-    return new Response(JSON.stringify({ msg: 'No LOCAL_PROXY provided' }), {
-      status: 400,
-    });
-  }
-
   const body = await request.json();
   const { messages, temperature = 1, password } = body;
   let { key, model } = body;
+
+  model = model || defaultModel;
 
   if (!key) {
     const next = loadBalancer(apiKeys, apiKeyStrategy);
     key = next();
   }
-
-  model = model || defaultModel;
 
   if (pwd && password !== pwd) {
     return new Response(
@@ -52,10 +46,12 @@ export const post: APIRoute = async ({ request }) => {
   }
 
   try {
-    const res = await fetch(`https://${baseURL}/v1/chat/completions`, {
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${key}`,
+        'HTTP-Referer': 'https://zurry2.vercel.app', // Substitua com seu domínio
+        'X-Title': 'Zurry AI',
       },
       method: 'POST',
       body: JSON.stringify({
@@ -68,6 +64,7 @@ export const post: APIRoute = async ({ request }) => {
         stream: true,
       }),
     });
+
     if (!res.ok) {
       return new Response(res.body, {
         status: res.status,
