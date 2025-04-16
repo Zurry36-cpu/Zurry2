@@ -5,13 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#343541',   // Fundo geral (lateral escura)
-        surface: '#FFFFFF',      // Área principal (conteúdo)
-        text: '#202123',         // Texto principal
-        subtle: '#6B6C7E',       // Texto secundário
-        border: '#E5E5E5',       // Bordas
-        input: '#F0F0F0',        // Fundo de inputs
-        hover: '#ECECF1',        // Cor de hover
+        background: '#343541', // fundo escuro
+        surface: '#444654',    // caixas e mensagens
+        border: '#565869',     // bordas
+        text: '#ECECF1',        // texto principal
+        subtle: '#A9A9BC',     // texto mais fraco
+        input: '#40414F',      // fundo do input
+        hover: '#2A2B32',      // hover menus
+        primary: '#10A37F'     // botão ou destaques
       },
     },
   },
