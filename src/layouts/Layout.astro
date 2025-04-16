@@ -22,7 +22,6 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-  /* ===== 🎨 Cores personalizadas ===== */
   :root {
     --color-background: #2b2b2b;
     --color-sidebar: #1e1e1e;
@@ -32,7 +31,7 @@ const { title } = Astro.props;
     --color-primary: #4fc3f7;
     --scrollbar-background-rgb: 100, 100, 100;
 
-    /* 🆕 Novas cores para texto da sidebar e do conteúdo principal */
+    /* 🆕 Novas cores para texto da sidebar e da área principal */
     --color-text-sidebar: #000000;
     --color-text-main: #ffffff;
   }
@@ -52,7 +51,6 @@ const { title } = Astro.props;
     background-color: var(--color-background);
   }
 
-  /* 🆕 Estilos aplicados aos lados */
   #sidebar {
     color: var(--color-text-sidebar);
   }
